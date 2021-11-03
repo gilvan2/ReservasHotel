@@ -10,7 +10,8 @@ import javax.persistence.*;
  */
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-public class Pessoa implements Serializable {
+@DiscriminatorColumn(name="tipo")
+public abstract class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
