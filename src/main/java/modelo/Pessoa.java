@@ -20,6 +20,8 @@ public abstract class Pessoa implements Serializable {
 	private String telefone;
 	private String email;
 	
+	private Endereco endereco;
+	
 
 	public Pessoa() {
 		super();
@@ -54,6 +56,13 @@ public abstract class Pessoa implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	@Embedded
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
    
 }
