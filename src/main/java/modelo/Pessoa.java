@@ -2,7 +2,11 @@ package modelo;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.Collection;
+
 import javax.persistence.*;
+
+import org.jboss.resteasy.spi.touri.MappedBy;
 
 /**
  * Entity implementation class for Entity: Pessoa
@@ -21,6 +25,8 @@ public abstract class Pessoa implements Serializable {
 	private String email;
 	
 	private Endereco endereco;
+	
+	private Collection<Reserva> reservas;
 	
 
 	public Pessoa() {
@@ -63,6 +69,13 @@ public abstract class Pessoa implements Serializable {
 	}
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+	@OneToMany(mappedBy = "cliente")
+	public Collection<Reserva> getReservas() {
+		return reservas;
+	}
+	public void setReservas(Collection<Reserva> reservas) {
+		this.reservas = reservas;
 	}
    
 }
