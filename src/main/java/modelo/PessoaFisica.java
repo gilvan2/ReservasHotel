@@ -50,6 +50,7 @@ public class PessoaFisica extends Pessoa implements Serializable {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+	@Enumerated
 	public Sexo getSexo() {
 		return sexo;
 	}

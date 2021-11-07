@@ -1,8 +1,12 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
+
+import org.hibernate.annotations.Cascade;
+
 import modelo.Pessoa;
 
 /**
@@ -19,6 +23,8 @@ public class Reserva implements Serializable {
 	private Date data;
 	private double valor;
 	private Pessoa cliente;
+	
+	private Collection<DiariaReservada> diarias;
 
 	public Reserva() {
 		super();
@@ -54,6 +60,15 @@ public class Reserva implements Serializable {
 
 	public void setCliente(Pessoa cliente) {
 		this.cliente = cliente;
+	}
+	@OneToMany(mappedBy = "reserva",
+			fetch = FetchType.EAGER,//Carrega todos os elementos
+			cascade = CascadeType.ALL)
+	public Collection<DiariaReservada> getDiarias() {
+		return diarias;
+	}
+	public void setDiarias(Collection<DiariaReservada> diarias) {
+		this.diarias = diarias;
 	}
    
 }
